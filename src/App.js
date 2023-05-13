@@ -1,23 +1,25 @@
 import { useState } from "react";
 import SearchBox from "./components/SearchBox";
+import ResponseContainer from "./components/ResponseContainer";
 
 function App() {
   const [mediaInput, setMediaInput] = useState('');
-  // setMediaInput('test');
+  const [apiResponse, setApiResponse] = useState([]);
 
   return (
     <main>
       <h1>Hello, World!</h1>
-      <SearchBox mediaInput={mediaInput} setMediaInput={setMediaInput}></SearchBox>
-      {/* <SearchBox /> */}
+      <SearchBox
+        mediaInput={mediaInput}
+        setMediaInput={setMediaInput}
+        setApiResponse={setApiResponse}
+      ></SearchBox>
+
+      <ResponseContainer
+        apiResponse={apiResponse}
+      />
     </main>
   );
 }
 
 export default App;
-
-
-// TODO: Create handleFormSubmit event listener, that sents request to API for data. Input is working.
-
-
-// https://rapidapi.com/movie-of-the-night-movie-of-the-night-default/api/streaming-availability/details

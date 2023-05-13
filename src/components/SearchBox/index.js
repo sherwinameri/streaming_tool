@@ -1,18 +1,36 @@
+function SearchBox({ mediaInput, setMediaInput, setApiResponse }) {
 
-function SearchBox(props) {
-	const mediaInput = props.mediaInput;
-	const setMediaInput = props.setMediaInput;
+	const handleInputChange = event => setMediaInput(event.target.value);
 
-	const handleInputChange = (e) => {
-		const mediaInput = e.target.value;
-		setMediaInput(e.target.value);
-	};
+	const handleFormSubmit = async event => {
+		event.preventDefault();
+
+		const url = `https://streaming-availability.p.rapidapi.com/v2/search/title?title=${mediaInput}&country=us&show_type=all&output_language=en`;
+		const options = {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/octet-stream',
+				'X-RapidAPI-Key': '8c972cdc73msh827743dddabc3e4p18d853jsn8fa1a17c5fbb',
+				'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+			}
+		};
+
+		try {
+			const response = await fetch(url, options);
+			const result = await response.json();
+			console.log(result);
+			setApiResponse(result);
+			setMediaInput('');
+		} catch (error) {
+			console.error(error);
+		}
+	}
 
 	return (
-				<form>
-					<h2>SearchBox</h2>
-					
-					<label htmlFor="media-input">What are you trying to watch?</label><br />
+		<form onSubmit={handleFormSubmit}>
+			<h2>SearchBox</h2>
+
+			<label htmlFor="media-input">What are you trying to watch?</label><br />
 			<input
 				onChange={handleInputChange}
 				id="media-input"
@@ -20,10 +38,9 @@ function SearchBox(props) {
 				type="text"
 				value={mediaInput} />
 
-					<button type="submit">Search</button>
-				</form>
-    );
+			<button type="submit">Search</button>
+		</form>
+	);
 }
 
 export default SearchBox;
-
