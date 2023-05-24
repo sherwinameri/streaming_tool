@@ -1,4 +1,4 @@
-function SearchBox({ mediaInput, setMediaInput, setApiResponse }) {
+function SearchBox({ mediaInput, setMediaInput, setApiResponse, setIsLoading }) {
 
 	const handleInputChange = event => setMediaInput(event.target.value);
 
@@ -16,11 +16,13 @@ function SearchBox({ mediaInput, setMediaInput, setApiResponse }) {
 		};
 
 		try {
+			setIsLoading(true);
 			const response = await fetch(url, options);
 			const result = await response.json();
 			console.log(result);
 			setApiResponse(result);
 			setMediaInput('');
+			setIsLoading(false);
 		} catch (error) {
 			console.error(error);
 		}

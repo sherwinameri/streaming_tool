@@ -5,6 +5,7 @@ import ResponseContainer from "./components/ResponseContainer";
 function App() {
   const [mediaInput, setMediaInput] = useState('');
   const [apiResponse, setApiResponse] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <main>
@@ -13,10 +14,12 @@ function App() {
         mediaInput={mediaInput}
         setMediaInput={setMediaInput}
         setApiResponse={setApiResponse}
+        setIsLoading={setIsLoading}
       ></SearchBox>
 
       <ResponseContainer
         apiResponse={apiResponse}
+        isLoading={isLoading}
       />
     </main>
   );
