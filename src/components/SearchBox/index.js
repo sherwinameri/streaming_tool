@@ -30,7 +30,7 @@ function SearchBox({ mediaInput, setMediaInput, setApiResponse, setIsLoading }) 
 
 	return (
 		<form onSubmit={handleFormSubmit}>
-			<h2>SearchBox</h2>
+			<h2>Developed by Sherwin A.</h2>
 
 			<label htmlFor="media-input">What are you trying to watch?</label><br />
 			<input

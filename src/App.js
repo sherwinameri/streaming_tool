@@ -9,7 +9,7 @@ function App() {
 
   return (
     <main>
-      <h1>Hello, World!</h1>
+      <h1>Welcome to StreamFinder!</h1>
       <SearchBox
         mediaInput={mediaInput}
         setMediaInput={setMediaInput}
