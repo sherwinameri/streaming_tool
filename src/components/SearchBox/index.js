@@ -1,4 +1,4 @@
-function SearchBox({ mediaInput, setMediaInput, setApiResponse, setIsLoading }) {
+function SearchBox({ mediaInput, setMediaInput, setApiResponse, setIsLoading, setShowMore,setShowButton }) {
 
 	const handleInputChange = event => setMediaInput(event.target.value);
 
@@ -17,6 +17,9 @@ function SearchBox({ mediaInput, setMediaInput, setApiResponse, setIsLoading }) 
 
 		try {
 			setIsLoading(true);
+			setShowMore("hidden");
+			setApiResponse([]);
+			setShowButton(true);
 			const response = await fetch(url, options);
 			const result = await response.json();
 			console.log(result);

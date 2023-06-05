@@ -6,6 +6,8 @@ function App() {
   const [mediaInput, setMediaInput] = useState('');
   const [apiResponse, setApiResponse] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showMore, setShowMore] = useState('hidden');
+  const [showButton, setShowButton] = useState(true);
 
   return (
     <main>
@@ -15,11 +17,17 @@ function App() {
         setMediaInput={setMediaInput}
         setApiResponse={setApiResponse}
         setIsLoading={setIsLoading}
+        setShowMore={setShowMore}
+        setShowButton={setShowButton}
       ></SearchBox>
 
       <ResponseContainer
         apiResponse={apiResponse}
         isLoading={isLoading}
+        showMore={showMore}
+        setShowMore={setShowMore}
+        showButton={showButton}
+        setShowButton={setShowButton}
       />
     </main>
   );
